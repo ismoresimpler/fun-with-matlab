@@ -3,7 +3,7 @@ function [x1, x2] = SolveQuadratic2(a, b, c )
     discriminant = b*b - 4*a*c;
     
     % Only solve for real roots
-    if disc < 0
+    if discriminant < 0
         x1 = 0;
         x2 = 0;
     else
