@@ -7,6 +7,11 @@ classdef Account < handle
        Balance = 0;
    end
    
+   % create an events block 
+   events
+        InsufficientFunds
+   end
+   
    % create a methods block to allow access to properties
    methods
        % create a function that allows
@@ -24,6 +29,10 @@ classdef Account < handle
             if (amount <= obj.Balance)
                 obj.Balance = obj.Balance - amount;
             else
+                % Raise an event to allow 
+                % other classes to know that
+                % something has occured
+                notify(obj, 'InsufficientFunds')
                 disp('insufficient funds');
             end
        end
